@@ -1,4 +1,4 @@
-﻿internal class Program
+﻿internal class Driver
 {
     static char[,] board = new char[3, 3];
     private static void Main(string[] args)
