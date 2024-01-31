@@ -13,7 +13,7 @@ namespace Driver
             // print boardArray[x][y]
             // print | after the first and second position of the row
             // print a bunch of dashes in a new line
-            Console.WriteLine(" 1 2 3");
+            Console.WriteLine(" 1  2  3");
             for (int row = 0; row < 3; row++)
             {
                 Console.Write(row + 1);
@@ -23,7 +23,7 @@ namespace Driver
                     if (col < 2) Console.Write("|");
                 }
                 Console.WriteLine();
-                if (row < 2) Console.WriteLine(" -----");
+                if (row < 2) Console.WriteLine(" --------");
             }
         }
 
