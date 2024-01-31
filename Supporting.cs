@@ -27,9 +27,51 @@ namespace Driver
             }
         }
 
-        public string[] gameResults(string[] boardArray)
+        public string[] gameResults(string[,] boardArray)
         {
             string[] results = new string[2];
+            string foundWinner = "no";
+            string winnerName = "";
+            
+            // check rows winner
+            for (int row = 0; row < 3; row++)
+            {
+                if ((boardArray[row, 0] == boardArray[row, 1]) && (boardArray[row, 1] == boardArray[row, 2]))
+                {
+                    foundWinner = "rows";
+                    winnerName = boardArray[row, 0];
+                }
+            }
+
+            if (foundWinner.Equals("no"))
+            {
+                for (int col = 0; col < 3; col++)
+                {
+                    if ((boardArray[0, col] == boardArray[1, col]) && (boardArray[1, col] == boardArray[2, col]))
+                    {
+                        foundWinner = "columns";
+                        winnerName = boardArray[0, col];
+                    }
+                }
+            }
+
+            if (foundWinner.Equals("no"))
+            {
+                if ((boardArray[0, 2] == boardArray[1, 1]) && (boardArray[1, 1] == boardArray[2, 0]))
+                {
+                    foundWinner = "right diagonal";
+                    winnerName = boardArray[0, 2];
+                }
+
+                if ((boardArray[0, 0] == boardArray[1, 1]) && (boardArray[1, 1] == boardArray[2, 2]))
+                {
+                    foundWinner = "left diagonal";
+                    winnerName = boardArray[0, 0];
+                }
+            }
+            results[0] = foundWinner;
+            results[1] = winnerName;
+
             return results;
         }
     }
