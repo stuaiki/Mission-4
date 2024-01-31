@@ -3,9 +3,11 @@ Console.WriteLine("Welcome to the Tic-Tac-Toe game!");
 
 string rowNum = "";
 string colNum = "";
-string boardArray = [];
-
-boardArray = [[], [], []];
+string[,] boardArray = {
+{ " ", " ", " " },
+{ " ", " ", " " },
+{ " ", " ", " " }
+};
 
 Console.WriteLine("Which row do you want to put? (1~3) ");
 rowNum = Console.ReadLine();
