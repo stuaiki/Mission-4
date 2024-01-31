@@ -1,23 +1,14 @@
-﻿internal class Driver
+﻿using Mission-4;
+
+internal class Driver
 {
     static char[,] board = new char[3, 3];
     private static void Main(string[] args)
     {
+        Supporting class1 = new Supporting();
         // Welcome the user to the game
-        Console.WriteLine("Welcome to the Tic-Tac-Toe game!");
-
-        Console.WriteLine(" 1 2 3");
-        for (int row = 0; row < 3; row++)
-        {
-            Console.Write(row + 1);
-            for (int col = 0; col < 3; col++)
-            {
-                Console.Write($" {board[row, col]}");
-                if (col < 2) Console.Write("|");
-            }
-            Console.WriteLine();
-            if (row < 2) Console.WriteLine(" -----");
-        }
+        Console.WriteLine("Welcome to the Tic-Tac-Toe game!")
+        
     }
 
 
