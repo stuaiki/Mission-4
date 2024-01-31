@@ -2,7 +2,7 @@
 using System.Runtime.InteropServices;
 
 Console.WriteLine("Welcome to the Tic-Tac-Toe game!");
-
+// make variables
 bool bPlayGame = true;
 bool bPosition = true;
 string rowNum = "";
