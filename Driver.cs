@@ -87,7 +87,7 @@ while (bPlayGame)
     //End game when someone gets tic tac toe
     if (result[0].Equals("Yes"))
     {
-        Console.WriteLine($"\nTic Tac Toe, Three in a Row! The winner is {result[1]}!!");
+        Console.WriteLine($"\nTic-Tac-Toe, Three in a Row! The winner is {result[1]}!!");
         bPlayGame = false;
     }
 
