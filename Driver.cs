@@ -55,12 +55,21 @@ while (bPlayGame)
             validNum = true;
 
             Console.WriteLine("\nPlayer " + player + "'s turn...\n" + "Which row do you want to pick (1-3)? ");
-            rowNum = int.Parse(Console.ReadLine());
+            string rowInput = Console.ReadLine();
 
             Console.WriteLine("Which column do you want to pick (1-3)? ");
-            colNum = int.Parse(Console.ReadLine());
+            string colInput = Console.ReadLine();
 
-            if ((colNum > 3 || colNum < 1) || (rowNum > 3 || rowNum < 1)) //Make sure that the input is between 1 and 3
+            //Check if the input is empty or non-numeric input
+            if (!int.TryParse(rowInput, out rowNum) || !int.TryParse(colInput, out colNum))
+            {
+                Console.WriteLine("Please enter a numeric value between 1 and 3 (1,2,or 3).");
+                validNum = false;
+                continue;
+            }
+
+            //Make sure that the input is between 1 and 3
+            if ((colNum > 3 || colNum < 1) || (rowNum > 3 || rowNum < 1))
             {
                 Console.WriteLine("Please enter a number between 1 and 3 (1,2,or 3).");
                 validNum = false;
