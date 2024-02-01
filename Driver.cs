@@ -1,4 +1,5 @@
-﻿// Welcome the user to the game
+﻿//Group 3-7 Aiki Takaku, Parker Watts, Donna Kim, Mac Hartsell 
+//Tic Tac Toe Project with driver part and supporting class part
 using System.Runtime.InteropServices;
 using System.Security.Cryptography.X509Certificates;
 using Driver;
