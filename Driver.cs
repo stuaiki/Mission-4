@@ -65,4 +65,9 @@ while (bPlayGame)
         bPlayGame = false;
     }
 
+    if (iNum == 8)
+    {
+        Console.WriteLine("Tie game.");
+        bPlayGame = false;
+    }
 }
