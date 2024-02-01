@@ -52,6 +52,7 @@ while (bPlayGame)
 
         do
         {
+            validNum = true;
 
             Console.WriteLine("\nPlayer " + player + "'s turn...\n" + "Which row do you want to pick (1-3)? ");
             rowNum = int.Parse(Console.ReadLine());
