@@ -1,19 +1,22 @@
 ﻿// Welcome the user to the game
 using System.Runtime.InteropServices;
+using System.Security.Cryptography.X509Certificates;
+using Driver;
+
+Supporting sup = new Supporting();
 
 Console.WriteLine("Welcome to the Tic-Tac-Toe game!");
 // make variables
 bool bPlayGame = true;
 bool bPosition = true;
-string rowNum = "";
-string colNum = "";
+string[] result = new string[2];
 string[,] boardArray = {
 { " ", " ", " " },
 { " ", " ", " " },
 { " ", " ", " " }
 };
 
-while (bPlayGame == true)
+while (bPlayGame)
 {
     int iNum = 0;
     string symbol = "";
@@ -28,134 +31,38 @@ while (bPlayGame == true)
     }
 
 
-    while (bPosition == true)
+    while (bPosition)
     {
-        bPosition = false;
+        int rowNum = 0;
+        int colNum = 0;
 
         Console.WriteLine("Which row do you want to put? (1~3) ");
-        rowNum = Console.ReadLine();
+        rowNum = int.Parse(Console.ReadLine());
 
         Console.WriteLine("Which column do you want to put? (1~3) ");
-        colNum = Console.ReadLine();
+        colNum = int.Parse(Console.ReadLine());
 
-        if (rowNum == "1")
+        if (boardArray[rowNum - 1, colNum - 1] == "X" || boardArray[rowNum - 1, colNum - 1] == "O")
         {
-            if (colNum == "1")
-            {
-                if (boardArray[0, 0] == "")
-                {
-                    boardArray[0, 0] = symbol;
-                }
-                else
-                {
-                    Console.WriteLine("Position is taken. Choose another spot");
-                    bPosition = true;
-                }
-            }
-            else if (colNum == "2")
-            {
-                if (boardArray[0, 1] == "")
-                {
-                    boardArray[0, 1] = symbol;
-                }
-                else
-                {
-                    Console.WriteLine("Position is taken. Choose another spot");
-                    bPosition = true;
-                }
-            }
-            else if (colNum == "3")
-            {
-                if (boardArray[0, 2] == "")
-                {
-                    boardArray[0, 2] = symbol;
-                }
-                else
-                {
-                    Console.WriteLine("Position is taken. Choose another spot");
-                    bPosition = true;
-                }
-            }
+            Console.WriteLine("Position is taken. Choose another spot");
         }
-        else if (rowNum == "2")
+        else
         {
-            if (colNum == "1")
-            {
-                if (boardArray[1, 0] == "")
-                {
-                    boardArray[1, 0] = symbol;
-                }
-                else
-                {
-                    Console.WriteLine("Position is taken. Choose another spot");
-                    bPosition = true;
-                }
-            }
-            else if (colNum == "2")
-            {
-                if (boardArray[1, 1] == "")
-                {
-                    boardArray[1, 1] = symbol;
-                }
-                else
-                {
-                    Console.WriteLine("Position is taken. Choose another spot");
-                    bPosition = true;
-                }
-            }
-            else if (colNum == "3")
-            {
-                if (boardArray[1, 2] == "")
-                {
-                    boardArray[1, 2] = symbol;
-                }
-                else
-                {
-                    Console.WriteLine("Position is taken. Choose another spot");
-                    bPosition = true;
-                }
-            }
-        }
-        else if (rowNum == "3")
-        {
-            if (colNum == "1")
-            {
-                if (boardArray[2, 0] == "")
-                {
-                    boardArray[2, 0] = symbol;
-                }
-                else
-                {
-                    Console.WriteLine("Position is taken. Choose another spot");
-                    bPosition = true;
-                }
-            }
-            else if (colNum == "2")
-            {
-                if (boardArray[2, 1] == "")
-                {
-                    boardArray[2, 1] = symbol;
-                }
-                else
-                {
-                    Console.WriteLine("Position is taken. Choose another spot");
-                    bPosition = true;
-                }
-            }
-            else if (colNum == "3")
-            {
-                if (boardArray[2, 2] == "")
-                {
-                    boardArray[2, 2] = symbol;
-                }
-                else
-                {
-                    Console.WriteLine("Position is taken. Choose another spot");
-                    bPosition = true;
-                }
-            }
+            boardArray[rowNum - 1, colNum - 1] = symbol;
+            bPosition = false;
         }
     }
 
     iNum++;
+
+    sup.printBoard(boardArray);
+
+    result = sup.gameResults(boardArray);
+
+    if (result[0].Equals("Yes"))
+    {
+        Console.WriteLine($"Winner is {result[1]}.");
+        bPlayGame = false;
+    }
+
 }
