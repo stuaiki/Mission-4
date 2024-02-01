@@ -61,6 +61,7 @@ while (bPlayGame)
             string colInput = Console.ReadLine();
 
             //Check if the input is empty or non-numeric input
+            //Convert string value to the int value
             if (!int.TryParse(rowInput, out rowNum) || !int.TryParse(colInput, out colNum))
             {
                 Console.WriteLine("Please enter a numeric value between 1 and 3 (1,2,or 3).");
