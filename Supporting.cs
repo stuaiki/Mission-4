@@ -30,7 +30,7 @@ namespace Driver
         public string[] gameResults(string[,] boardArray)
         {
             string[] results = new string[2];
-            string foundWinner = "no";
+            string foundWinner = "No";
             string winnerName = "";
             
             // check rows winner
@@ -38,37 +38,43 @@ namespace Driver
             {
                 if ((boardArray[row, 0] == boardArray[row, 1]) && (boardArray[row, 1] == boardArray[row, 2]))
                 {
-                    foundWinner = "rows";
+                    foundWinner = "Yes";
                     winnerName = boardArray[row, 0];
                 }
             }
 
-            if (foundWinner.Equals("no"))
+            if (foundWinner.Equals("No"))
             {
                 for (int col = 0; col < 3; col++)
                 {
                     if ((boardArray[0, col] == boardArray[1, col]) && (boardArray[1, col] == boardArray[2, col]))
                     {
-                        foundWinner = "columns";
+                        foundWinner = "Yes";
                         winnerName = boardArray[0, col];
                     }
                 }
             }
 
-            if (foundWinner.Equals("no"))
+            if (foundWinner.Equals("No"))
             {
                 if ((boardArray[0, 2] == boardArray[1, 1]) && (boardArray[1, 1] == boardArray[2, 0]))
                 {
-                    foundWinner = "right diagonal";
+                    foundWinner = "Yes";
                     winnerName = boardArray[0, 2];
                 }
 
                 if ((boardArray[0, 0] == boardArray[1, 1]) && (boardArray[1, 1] == boardArray[2, 2]))
                 {
-                    foundWinner = "left diagonal";
+                    foundWinner = "Yes";
                     winnerName = boardArray[0, 0];
                 }
             }
+
+            if (foundWinner.Equals("No"))
+            {
+                winnerName = "Tie Game";
+            }
+
             results[0] = foundWinner;
             results[1] = winnerName;
 
