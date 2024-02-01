@@ -8,7 +8,7 @@ Supporting sup = new Supporting();
 Console.WriteLine("Welcome to the Tic-Tac-Toe game!");
 // make variables
 bool bPlayGame = true;
-bool bPosition = true;
+int iNum = 0;
 string[] result = new string[2];
 string[,] boardArray = {
 { " ", " ", " " },
@@ -18,8 +18,8 @@ string[,] boardArray = {
 
 while (bPlayGame)
 {
-    int iNum = 0;
     string symbol = "";
+    bool bPosition = true;
 
     if (iNum % 2 == 0)
     {
@@ -35,12 +35,24 @@ while (bPlayGame)
     {
         int rowNum = 0;
         int colNum = 0;
+        bool validNum = true;
 
-        Console.WriteLine("Which row do you want to put? (1~3) ");
-        rowNum = int.Parse(Console.ReadLine());
+        do
+        {
 
-        Console.WriteLine("Which column do you want to put? (1~3) ");
-        colNum = int.Parse(Console.ReadLine());
+            Console.WriteLine("Which row do you want to put? (1-3) ");
+            rowNum = int.Parse(Console.ReadLine());
+
+            Console.WriteLine("Which column do you want to put? (1-3) ");
+            colNum = int.Parse(Console.ReadLine());
+
+            if ((colNum > 3 || colNum < 1) || (rowNum > 3 || rowNum < 1))
+            {
+                Console.WriteLine("Please enter a number between 1 and 3 (1,2,or 3).");
+                validNum = false;
+            }
+
+        } while (!validNum);
 
         if (boardArray[rowNum - 1, colNum - 1] == "X" || boardArray[rowNum - 1, colNum - 1] == "O")
         {
