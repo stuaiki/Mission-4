@@ -8,7 +8,7 @@ namespace Driver
 {
     internal class Supporting
     {
-        public void printBoard(string[,] boardArray) //Prints board
+        public void printBoard(string[,] boardArray) //Receives an array from the driver class and prints board out
         {
             // print boardArray[x][y]
             // print | after the first and second position of the row
@@ -28,7 +28,7 @@ namespace Driver
             }
         }
 
-        public string[] gameResults(string[,] boardArray) //Find if there is a winner and who it is
+        public string[] gameResults(string[,] boardArray) //Checks for the winner and returns the result of the game
         {
             string[] results = new string[2];
             string foundWinner = "No";

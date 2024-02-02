@@ -50,30 +50,31 @@ while (bPlayGame)
         int colNum = 0;
         bool validNum = true;
 
+        //Ask player for choices and Program handles bad input
         do
         {
-            Console.Write("Which row do you want to pick (1-3)? ");
+            validNum = true;
+
+            Console.WriteLine("\nPlayer " + player + "'s turn...\n" + "Which row do you want to pick (1-3)? ");
             string rowInput = Console.ReadLine();
 
-            Console.Write("Which column do you want to pick (1-3)? ");
+            Console.WriteLine("Which column do you want to pick (1-3)? ");
             string colInput = Console.ReadLine();
 
-            if (int.TryParse(rowInput, out rowNum) && int.TryParse(colInput, out colNum))
+            //Check if the input is empty or non-numeric input
+            //Convert string value to the int value
+            if (!int.TryParse(rowInput, out rowNum) || !int.TryParse(colInput, out colNum))
             {
-                // Both inputs were successfully parsed into integers.
-                if (rowNum >= 1 && rowNum <= 3 && colNum >= 1 && colNum <= 3)
-                {
-                    // Both values are within the valid range.
-                    validNum = true;
-                }
-                else
-                {
-                    Console.WriteLine("Please enter a number between 1 and 3 (1, 2, or 3) for both row and column.");
-                }
+                Console.WriteLine("Please enter a numeric value between 1 and 3 (1,2,or 3).");
+                validNum = false;
+                continue;
             }
-            else
+
+            //Make sure that the input is between 1 and 3
+            if ((colNum > 3 || colNum < 1) || (rowNum > 3 || rowNum < 1))
             {
-                Console.WriteLine("Please enter valid integer values for both row and column.");
+                Console.WriteLine("Please enter a number between 1 and 3 (1,2,or 3).");
+                validNum = false;
             }
 
         } while (!validNum);
@@ -82,7 +83,7 @@ while (bPlayGame)
         {
             Console.WriteLine("Position is taken. Please choose another spot.");
         }
-        else // Add symbol to spot
+        else //Updates the board array based off of the user choice
         {
             boardArray[rowNum - 1, colNum - 1] = symbol;
             bPosition = false;
@@ -96,7 +97,7 @@ while (bPlayGame)
     supTools.printBoard(boardArray);
     result = supTools.gameResults(boardArray);
 
-    //End game when someone gets tic tac toe
+    //Notifies user about win/loss/ or tie
     if (result[0].Equals("Yes"))
     {
         Console.WriteLine($"\nTic-Tac-Toe, Three in a Row! The winner is {result[1]}!!");
