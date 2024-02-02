@@ -52,18 +52,28 @@ while (bPlayGame)
 
         do
         {
-            validNum = true;
+            Console.Write("Which row do you want to pick (1-3)? ");
+            string rowInput = Console.ReadLine();
 
-            Console.WriteLine("\nPlayer " + player + "'s turn...\n" + "Which row do you want to pick (1-3)? ");
-            rowNum = int.Parse(Console.ReadLine());
+            Console.Write("Which column do you want to pick (1-3)? ");
+            string colInput = Console.ReadLine();
 
-            Console.WriteLine("Which column do you want to pick (1-3)? ");
-            colNum = int.Parse(Console.ReadLine());
-
-            if ((colNum > 3 || colNum < 1) || (rowNum > 3 || rowNum < 1)) //Make sure that the input is between 1 and 3
+            if (int.TryParse(rowInput, out rowNum) && int.TryParse(colInput, out colNum))
             {
-                Console.WriteLine("Please enter a number between 1 and 3 (1,2,or 3).");
-                validNum = false;
+                // Both inputs were successfully parsed into integers.
+                if (rowNum >= 1 && rowNum <= 3 && colNum >= 1 && colNum <= 3)
+                {
+                    // Both values are within the valid range.
+                    validNum = true;
+                }
+                else
+                {
+                    Console.WriteLine("Please enter a number between 1 and 3 (1, 2, or 3) for both row and column.");
+                }
+            }
+            else
+            {
+                Console.WriteLine("Please enter valid integer values for both row and column.");
             }
 
         } while (!validNum);
