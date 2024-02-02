@@ -50,6 +50,7 @@ while (bPlayGame)
         int colNum = 0;
         bool validNum = true;
 
+        //Ask player for choices and Program handles bad input
         do
         {
             validNum = true;
@@ -82,7 +83,7 @@ while (bPlayGame)
         {
             Console.WriteLine("Position is taken. Please choose another spot.");
         }
-        else // Add symbol to spot
+        else //Updates the board array based off of the user choice
         {
             boardArray[rowNum - 1, colNum - 1] = symbol;
             bPosition = false;
@@ -96,7 +97,7 @@ while (bPlayGame)
     supTools.printBoard(boardArray);
     result = supTools.gameResults(boardArray);
 
-    //End game when someone gets tic tac toe
+    //Notifies user about win/loss/ or tie
     if (result[0].Equals("Yes"))
     {
         Console.WriteLine($"\nTic-Tac-Toe, Three in a Row! The winner is {result[1]}!!");
